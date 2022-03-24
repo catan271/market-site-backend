@@ -5,6 +5,10 @@
 # evironment variables
 .env
 
+# package-lock files
+package-lock.json
+yarn-lock.json
+
 # Logs
 logs
 *.log
