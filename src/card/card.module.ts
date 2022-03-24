@@ -13,6 +13,6 @@ import { CardSchema } from "./schema/card.schema";
 })
 export class CardModule implements NestModule {
     configure(consumer: MiddlewareConsumer): MiddlewareConsumer | void {
-        consumer.apply(CorsMiddleware).forRoutes({ path: 'card', method: RequestMethod.GET });
+        consumer.apply(CorsMiddleware).forRoutes({ path: 'card', method: RequestMethod.PUT });
     }
 }

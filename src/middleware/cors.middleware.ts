@@ -1,8 +1,9 @@
-import { HttpException, HttpStatus, Injectable, NestMiddleware } from "@nestjs/common";
+import { Injectable, NestMiddleware } from "@nestjs/common";
+import { Request, Response, NextFunction } from "express";
 
 @Injectable()
 export class CorsMiddleware implements NestMiddleware {
-    use(req, res, next) {
+    use(req: Request, res: Response, next: NextFunction) {
         const allowedOrigin = [process.env.GAME_BACKEND];
 
         if (allowedOrigin.includes(req.header('Origin'))) {
@@ -10,7 +11,7 @@ export class CorsMiddleware implements NestMiddleware {
             res.header("Access-Control-Allow-Headers", "content-type");
             res.header("Access-Control-Allow-Methods", "PUT");
         } else {
-            res.header("Access-Control-Allow-Origin", "");
+            res.header("Access-Control-Allow-Origin", allowedOrigin[0]);
         }
 
         next();
